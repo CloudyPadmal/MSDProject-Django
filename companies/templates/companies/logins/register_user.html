@@ -1,0 +1,158 @@
+{% include "users/header.html" %}
+<html>
+	<body>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					{% if register %}
+						<a class="navbar-brand">Register</a>
+					{% else %}
+						<a class="navbar-brand">Update</a>
+					{% endif %}
+				</div>
+			</div>
+		</nav>
+		<br/>
+		{% if msg %}
+			<div class="alert alert-{{ css }} alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<strong>{{ msg }}</strong>
+			</div>
+		{% endif %}
+
+		<form method="post" action="{% url action_url %}">
+		{% csrf_token %}
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">First Name</label>
+				<div class="col-sm-10">
+					<input type="text" name="name" id="name" class="form-control"
+						placeholder="First Name" />
+					<form:errors path="name" class="control-label" />
+				</div>
+			</div>
+			<br />
+
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Surname</label>
+				<div class="col-sm-10">
+					<input type="text" name="surname" id="surname" class="form-control"
+						placeholder="Surname" />
+					<form:errors path="surname" class="control-label" />
+				</div>
+			</div>
+			<br />
+
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Email</label>
+				<div class="col-sm-10">
+					<input type="text" name="email" id="email" class="form-control"
+						placeholder="Email" />
+					<form:errors path="emailAddress" class="control-label" />
+				</div>
+			</div>
+			<br />
+
+			{% if not register %}
+				<hidden path="indexNumber" />
+			{% else %}
+			
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Password</label>
+				<div class="col-sm-10">
+					<input type="password" name="password" id="password" class="form-control"
+						placeholder="Password" />
+					<form:errors path="password" class="control-label" />
+				</div>
+			</div>
+			<br />
+
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Confirm Password</label>
+				<div class="col-sm-10">
+					<input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
+						placeholder="Confirm" />
+					<form:errors path="confirmPassword" class="control-label" />
+				</div>
+			</div>
+			<br />
+
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Index</label>
+				<div class="col-sm-10">
+					<input type="text" name="indexNumber" id="indexNumber" class="form-control"
+						placeholder="Index Number" />
+					<form:errors path="indexNumber" class="control-label" />
+				</div>
+			</div>
+			<br />
+			{% endif %}
+
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">Telephone</label>
+				<div class="col-sm-10">
+					<input type="text" name="telephone" id="telephone" class="form-control"
+						placeholder="Telephone" />
+					<form:errors path="telephone" class="control-label" />
+				</div>
+			</div>
+			<br />
+
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">GPA</label>
+				<div class="col-sm-10">
+					<input type="text" name="gradedPoint" id="gradedPoint" class="form-control"
+						placeholder="GPA" />
+					<form:errors path="gradedPoint" class="control-label" />
+				</div>
+			</div>
+			<br />
+
+			<div class="form-group ${status.error ? 'has-error' : ''}">
+				<label class="col-sm-2 control-label">About Me</label>
+				<div class="col-sm-10">
+					<textarea name="aboutMe" id="aboutMe" class="form-control"
+						placeholder="About Me"></textarea>
+					<form:errors path="aboutMe" class="control-label" />
+				</div>
+			</div>
+
+			<div
+				class="form-group ${status.error ? 'has-error' : ''} check-box-block">
+				<label class="col-sm-2 control-label">Preferences</label>
+				<div class="col-sm-10">
+						<p>{{ preferences }}</p>
+
+					<form:errors path="preferences" class="control-label" />
+					<br />
+				</div>
+			</div>
+
+			<div
+				class="form-group ${ status.error ? 'has-error' : '' } check-box-block">
+				<label class="col-sm-2 control-label">Gender</label>
+				<div class="col-sm-10">
+					<label class="radio-inline"> 
+						<input type="radio" name="gender" id="M" value="Male" />Male
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="gender" id="F" value="Female" />Female
+					</label><br />
+					<form:errors path="gender" class="control-label" />
+				</div>
+			</div>
+			<br />
+
+			<div class="register-buttons">
+				{% if register %}
+					<button type="submit" name="register" class="btn-lg btn-primary">Register</button>
+				{% else %}
+					<button type="submit" name="update" class="btn-lg btn-primary">Update</button>
+				{% endif %}
+			</div>
+		</form>
+	</body>
+</html>
+<!-- &copy; Padmal -->
