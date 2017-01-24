@@ -28,29 +28,26 @@
 			<div class="form-group ${status.error ? 'has-error' : ''}">
 				<label class="col-sm-2 control-label">First Name</label>
 				<div class="col-sm-10">
-					<input type="text" name="name" id="name" class="form-control"
-						placeholder="First Name" />
-					<form:errors path="name" class="control-label" />
+					<div class="form-controls">{{ form.name }}</div>
+					<div class="control-label">{{ form.name.errors }}</div>
 				</div>
 			</div>
 			<br />
 
-			<div class="form-group ${status.error ? 'has-error' : ''}">
+			<div class="form-group {% if form.surname.errors %}'has-error'{% endif %}">
 				<label class="col-sm-2 control-label">Surname</label>
 				<div class="col-sm-10">
-					<input type="text" name="surname" id="surname" class="form-control"
-						placeholder="Surname" />
-					<form:errors path="surname" class="control-label" />
+					<div class="form-controls">{{ form.surname }}</div>
+					<div class="control-label">{{ form.surname.errors }}</div>
 				</div>
 			</div>
 			<br />
 
-			<div class="form-group ${status.error ? 'has-error' : ''}">
+			<div class="form-group {% if form.surname.errors %}'has-error'{% endif %}">
 				<label class="col-sm-2 control-label">Email</label>
 				<div class="col-sm-10">
-					<input type="text" name="email" id="email" class="form-control"
-						placeholder="Email" />
-					<form:errors path="emailAddress" class="control-label" />
+					<div class="form-controls">{{ form.email }}</div>
+					<div class="control-label">{{ form.email.errors }}</div>
 				</div>
 			</div>
 			<br />
@@ -59,88 +56,76 @@
 				<hidden path="indexNumber" />
 			{% else %}
 			
-			<div class="form-group ${status.error ? 'has-error' : ''}">
+			<div class="form-group {% if form.password.errors %}'has-error'{% endif %}">
 				<label class="col-sm-2 control-label">Password</label>
 				<div class="col-sm-10">
-					<input type="password" name="password" id="password" class="form-control"
-						placeholder="Password" />
-					<form:errors path="password" class="control-label" />
+					<div class="form-controls">{{ form.password }}</div>
+					<div class="control-label">{{ form.password.errors }}</div>
 				</div>
 			</div>
 			<br />
 
-			<div class="form-group ${status.error ? 'has-error' : ''}">
+			<div class="form-group {% if form.confirmPassword.errors %}'has-error'{% endif %}">
 				<label class="col-sm-2 control-label">Confirm Password</label>
 				<div class="col-sm-10">
-					<input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
-						placeholder="Confirm" />
-					<form:errors path="confirmPassword" class="control-label" />
+					<div class="form-controls">{{ form.confirmPassword }}</div>
+					<div class="control-label">{{ form.confirmPassword.errors }}</div>
 				</div>
 			</div>
 			<br />
 
-			<div class="form-group ${status.error ? 'has-error' : ''}">
+			<div class="form-group {% if form.indexNumber.errors %}'has-error'{% endif %}">
 				<label class="col-sm-2 control-label">Index</label>
 				<div class="col-sm-10">
-					<input type="text" name="indexNumber" id="indexNumber" class="form-control"
-						placeholder="Index Number" />
-					<form:errors path="indexNumber" class="control-label" />
+					<div class="form-controls">{{ form.indexNumber }}</div>
+					<div class="control-label">{{ form.indexNumber.errors }}</div>
 				</div>
 			</div>
 			<br />
 			{% endif %}
 
-			<div class="form-group ${status.error ? 'has-error' : ''}">
+			<div class="form-group {% if form.telephone.errors %}'has-error'{% endif %}">
 				<label class="col-sm-2 control-label">Telephone</label>
 				<div class="col-sm-10">
-					<input type="text" name="telephone" id="telephone" class="form-control"
-						placeholder="Telephone" />
-					<form:errors path="telephone" class="control-label" />
+					<div class="form-controls">{{ form.telephone }}</div>
+					<div class="control-label">{{ form.telephone.errors }}</div>
 				</div>
 			</div>
 			<br />
 
-			<div class="form-group ${status.error ? 'has-error' : ''}">
+			<div class="form-group {% if form.gpa.errors %}'has-error'{% endif %}">
 				<label class="col-sm-2 control-label">GPA</label>
 				<div class="col-sm-10">
-					<input type="text" name="gradedPoint" id="gradedPoint" class="form-control"
-						placeholder="GPA" />
-					<form:errors path="gradedPoint" class="control-label" />
+					<div class="form-controls">{{ form.gpa }}</div>
+					<div class="control-label">{{ form.gpa.errors }}</div>
 				</div>
 			</div>
 			<br />
 
-			<div class="form-group ${status.error ? 'has-error' : ''}">
+			<div class="form-group {% if form.aboutMe.errors %}'has-error'{% endif %}">
 				<label class="col-sm-2 control-label">About Me</label>
 				<div class="col-sm-10">
-					<textarea name="aboutMe" id="aboutMe" class="form-control"
-						placeholder="About Me"></textarea>
-					<form:errors path="aboutMe" class="control-label" />
+					<div class="form-controls">{{ form.aboutMe }}</div>
+					<div class="control-label">{{ form.aboutMe.errors }}</div>
 				</div>
 			</div>
+			<br />
 
-			<div
-				class="form-group ${status.error ? 'has-error' : ''} check-box-block">
+			<div class="form-group {% if form.preferences.errors %}'has-error'{% endif %}">
 				<label class="col-sm-2 control-label">Preferences</label>
 				<div class="col-sm-10">
-						<p>{{ preferences }}</p>
-
-					<form:errors path="preferences" class="control-label" />
-					<br />
+					{% for element in prefForm %}
+					   {{ element }} {{ element.label_tag }}<br />
+					{% endfor %}
 				</div>
 			</div>
+			<br />
 
-			<div
-				class="form-group ${ status.error ? 'has-error' : '' } check-box-block">
+			<div class="form-group {% if form.gender.errors %}'has-error'{% endif %}">
 				<label class="col-sm-2 control-label">Gender</label>
 				<div class="col-sm-10">
-					<label class="radio-inline"> 
-						<input type="radio" name="gender" id="M" value="Male" />Male
-					</label>
-					<label class="radio-inline">
-						<input type="radio" name="gender" id="F" value="Female" />Female
-					</label><br />
-					<form:errors path="gender" class="control-label" />
+					<div class="form-controls">{{ form.gender }}</div>
+					<div class="control-label">{{ form.gender.errors }}</div>
 				</div>
 			</div>
 			<br />
