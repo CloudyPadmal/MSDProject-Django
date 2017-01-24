@@ -1,0 +1,42 @@
+{% include "users/header.html" %}
+<html>
+	<body class="main-body">	
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand">{{ principal }}&nbsp;Login</a>
+				</div>
+				{% if not admin %}
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="{% url register_url %}">Register</a></li>
+						</ul>
+					</div>
+				{% endif %}
+			</div>
+		</nav>
+
+		{% if msg %}
+			<div class="alert alert-{{ css }} alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<strong>{{ msg }}</strong>
+			</div>
+		{% endif %}
+
+		<div class="login-page">
+			<div class="form">
+				<form method="POST" modelAttribute="info" action="{{ action_url }}">
+				{% csrf_token %}
+					<input type="text" placeholder="{{ principal }}" path="username" />
+					<input type="password" placeholder="Password" path="password"/>
+					<hidden path="company"/>
+					<button type="submit" class="midbutton positivebtn" name="login">Login</button>
+				</form>
+			</div>
+		</div>		
+	</body>
+</html>
+<!-- &copy; Padmal -->

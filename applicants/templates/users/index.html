@@ -1,0 +1,22 @@
+{% include "users/header.html" %}
+
+<html>
+	<body class="main-body">
+		<div class="container">
+
+			<div class="jumbotron">
+				<h1>MSD Project</h1>
+				<p class="lead">Where companies meet students with Django!!!</p>
+				<p>				
+					<a href="{% url 'users:user-login' %}"><button class="bigbutton positivebtn">Student Login</button></a>
+					<a href="{% url 'users:user-login' %}"><button class="bigbutton positivebtn">Company Login</button></a>
+				</p>
+			</div>
+				
+			<footer class="main-footer">
+				<p>&copy; 2016 MSDProject, Inc.</p>
+			</footer>
+		</div>
+	</body>
+</html>
+<!-- &copy; Padmal -->
